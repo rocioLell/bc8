@@ -1,3 +1,4 @@
+package katas;
 
 /**
  * Contar el número de duplicados

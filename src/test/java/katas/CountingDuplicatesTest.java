@@ -1,4 +1,8 @@
+package katas;
+
 import static org.junit.Assert.*;
+
+import katas.CountingDuplicates;
 import org.junit.Test;
 
 public class CountingDuplicatesTest {
