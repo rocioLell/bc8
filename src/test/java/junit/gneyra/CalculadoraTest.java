@@ -1,8 +1,9 @@
-package junit.mentoria;
+package junit.gneyra;
 
-import static org.junit.Assert.*;
 
 import org.junit.*;
+
+import static org.junit.Assert.assertEquals;
 
 
 public class CalculadoraTest {
@@ -13,6 +14,7 @@ public class CalculadoraTest {
 
     @BeforeClass
     public static void beforeClass(){
+
         System.out.println("beforeClass");
     }
 
