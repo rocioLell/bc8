@@ -1,8 +1,8 @@
-package junit.mentoria;
-
-import static org.junit.Assert.*;
+package junit.fmallea;
 
 import org.junit.*;
+
+import static org.junit.Assert.assertEquals;
 
 public class CalculadoraTest {
 
