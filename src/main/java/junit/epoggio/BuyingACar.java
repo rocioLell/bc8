@@ -19,7 +19,7 @@ public class BuyingACar {
                 percentLossByMonth = percentLossByMonth + lossPercentIncrease;
             }
 
-            priceOld = priceOld - priceOld * (percentLossByMonth / 1    00);
+            priceOld = priceOld - priceOld * (percentLossByMonth / 100);
             priceNew = priceNew - priceNew * (percentLossByMonth / 100);
             savings = savings + savingPerMonth;
         }
