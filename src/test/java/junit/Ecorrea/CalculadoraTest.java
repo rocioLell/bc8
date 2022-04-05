@@ -1,11 +1,9 @@
-package junit.morona;
-
+package junit.Ecorrea;
 import org.junit.*;
-
 import static org.junit.Assert.assertEquals;
 
 public class CalculadoraTest {
-    junit.morona.Calculadora objetoPrueba;
+    Calculadora objetoPrueba;
     @BeforeClass
     public static void beforeclass(){
         System.out.println("beforeClass");
