@@ -1,11 +1,16 @@
-package junit.morona;
+package junit.rlell;
 
-import org.junit.*;
+
+import junit.morona.Calculadora;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class CalculadoraTest {
-    junit.morona.Calculadora objetoPrueba;
+    Calculadora objetoPrueba;
     @BeforeClass
     public static void beforeclass(){
         System.out.println("beforeClass");
@@ -38,10 +43,6 @@ public class CalculadoraTest {
     public void after(){
         System.out.println("after");
 
-    }
-    @AfterClass
-    public static void afterClass(){
-        System.out.println("afterClass");
     }
 
 }
