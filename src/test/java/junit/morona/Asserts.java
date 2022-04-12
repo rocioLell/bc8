@@ -1,4 +1,4 @@
-package katas.morona;
+package junit.morona;
 
 import org.junit.Test;
 
