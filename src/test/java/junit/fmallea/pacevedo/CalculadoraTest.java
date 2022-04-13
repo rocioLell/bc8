@@ -1,7 +1,8 @@
-package junit.pacevedo;
+package junit.fmallea.pacevedo;
 
 import static org.junit.Assert.*;
 
+import junit.pacevedo.Calculadora;
 import org.junit.*;
 
 
