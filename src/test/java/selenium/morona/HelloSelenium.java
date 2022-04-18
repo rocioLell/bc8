@@ -1,4 +1,4 @@
-package junit.morona;
+package selenium.morona;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
