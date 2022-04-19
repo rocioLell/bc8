@@ -22,6 +22,9 @@ public class ManejoDeElementosWeb {
     public By localizadorBtnDownload = By.id("ui-id-4");
     public By localizadorBtnPDF = By.xpath("//a[@href=\"/download/jqueryui/menu/menu.pdf\"]");
     public By localizadoresCheckBoxes = By.xpath("//form[@id=\"checkboxes\"]//input");
+    public By localizadorDeIframes = By.tagName("iframe");
+    public By localizadorEditorTexto = By.id("tinymce");
+    public By localizadorWebTables = By.tagName("table");
 
 
 
@@ -75,8 +78,51 @@ public class ManejoDeElementosWeb {
             chk.click();
             Thread.sleep(1000);
         }
+    }
+
+    @Test
+    public void iframes(){
+        driver.get("https://the-internet.herokuapp.com/tinymce");
+        List<WebElement> iframes = driver.findElements(localizadorDeIframes);
+
+        //cambiarnos de frame
+        driver.switchTo().frame(iframes.get(0));
+
+        WebElement editorTexto = driver.findElement(localizadorEditorTexto);
+        editorTexto.clear();
+        editorTexto.sendKeys("Hola estamos aprendiendo Selenium");
 
     }
+
+    @Test
+    public void webTables(){
+        driver.get("https://the-internet.herokuapp.com/tables");
+
+        //Lista de Webtables en Pagina
+        List<WebElement> webTables = driver.findElements(localizadorWebTables);
+
+        //1. Cuantas Columnas tiene la tabla 1??
+        List<WebElement> columnas = webTables.get(0).findElement(By.tagName("thead")).findElements(By.tagName("th")); // encabezado de la tabla
+        int tamanioColumnas = columnas.size();
+        //2 clicks para ordenar por mayor deuda la webTable
+        if(columnas.get(3).getText().contains("Due")){
+            columnas.get(3).click();
+            columnas.get(3).click();
+        }
+        //obtener las filas de la webtable
+        List<WebElement> filas = webTables.get(0).findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+        int tamanioFilas = filas.size();
+
+        //trabajamos en la primera fila para obtener nombre, apellido y deuda
+        String nombre = filas.get(0).findElement(By.xpath("td[2]")).getText();
+        String apellido = filas.get(0).findElement(By.xpath("td[1]")).getText();
+        String deuda = filas.get(0).findElement(By.xpath("td[4]")).getText();
+
+        System.out.println("El usuario con mayor deuda de la tabla 1 es: "+nombre+" "+apellido+", y su deuda alcanza los "+deuda+ " dolares.");
+
+    }
+
+    //ejercicio tabla 2: ordenar por Nombre y entregar datos de deuda de todos los usuarios
 
     @After
     public void close(){
