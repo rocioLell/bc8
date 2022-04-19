@@ -5,11 +5,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class HelloSelenium {
     public static void main(String[] args) {
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
+        WebDriverManager.firefoxdriver().setup();
+        WebDriver driver = new FirefoxDriver();
 
         // operar con el driver
 
@@ -22,7 +23,7 @@ public class HelloSelenium {
        WebElement barraTextoGoogle = driver.findElement(By.name("q"));
        barraTextoGoogle.sendKeys("Tsoft");
        barraTextoGoogle.submit();
-       WebElement linkTsoft = driver.findElement(By.xpath("//*[@id=\"rso\"]/div[1]/div/div/div/div/div/div[1]/a/h3"));
+       WebElement linkTsoft = driver.findElement(By.xpath("//h3[text()=\"HOME - TSOFT - Make IT Real\"]"));
        linkTsoft.click();
        String tituloPaginaTsoft = driver.getTitle();
         System.out.println(tituloPaginaTsoft);
