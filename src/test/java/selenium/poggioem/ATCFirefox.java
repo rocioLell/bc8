@@ -9,6 +9,11 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
 import static org.junit.Assert.assertTrue;
 
 public class ATCFirefox {
@@ -47,20 +52,19 @@ public class ATCFirefox {
             driver = new FirefoxDriver();
             driver.manage().deleteAllCookies();
             driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+
         }
 
     @Test
-    public void ATC01() throws InterruptedException {
+    public void ATC01(){
         boolean resultadoT1 = false;
         driver.get("http://automationpractice.com/index.php");
         WebElement elementSRC = driver.findElement(localizadorBusqueda);
         elementSRC.click();
-        Thread.sleep(1000);
         elementSRC.sendKeys("chiffon dress");
-        Thread.sleep(1000);
         WebElement elementButton = driver.findElement(localizadorSearch);
         elementButton.click();
-        Thread.sleep(1000);
         String url = driver.getCurrentUrl();
         if (url.contains("chiffon+dress")){
             resultadoT1=true;
@@ -69,7 +73,7 @@ public class ATCFirefox {
     }
 
         @Test
-        public void ATC02() throws InterruptedException {
+        public void ATC02(){
             boolean resultadoT2 = false;
             driver.get("http://automationpractice.com/index.php");
             WebElement elementSRC = driver.findElement(localizadorBusqueda);
@@ -77,12 +81,9 @@ public class ATCFirefox {
             elementSRC.sendKeys("Printed Chiffon Dress");
             WebElement elementButton = driver.findElement(localizadorSearch);
             elementButton.click();
-            Thread.sleep(2000);
             WebElement elementDress = driver.findElement(localizadorPrintedChiffonDress);
             elementDress.click();
-            Thread.sleep(10000);
             WebElement elementName = driver.findElement(localizadorDressName);
-            Thread.sleep(2000);
             if(elementName.getText().contains("Printed Chiffon Dress")){
                 resultadoT2 = true;
             }
@@ -90,32 +91,27 @@ public class ATCFirefox {
         }
 
     @Test
-    public void ATC03() throws InterruptedException {
+    public void ATC03(){
         boolean resultado3 = false;
         driver.get("http://automationpractice.com/index.php");
         WebElement elementSRC = driver.findElement(localizadorBusqueda);
         elementSRC.click();
-        Thread.sleep(1000);
         elementSRC.sendKeys("liquido matapulgas");
-        Thread.sleep(1000);
         elementSRC.sendKeys(Keys.RETURN);
-        Thread.sleep(3000);
         WebElement elementError = driver.findElement(localizadorTextoError);
         if (elementError.getText().contains("No results were found for your search")){
             resultado3 = true;
         }
         assertTrue(resultado3);
-        Thread.sleep(1000);
     }
 
         @Test
-        public void ATC04() throws InterruptedException {
+        public void ATC04(){
             boolean resultadoT4=false;
             driver.get("http://automationpractice.com/index.php");
             WebElement elementSRC = driver.findElement(localizadorBusqueda);
             elementSRC.click();
             elementSRC.sendKeys("blo");
-            Thread.sleep(2000);
             WebElement blouses = driver.findElement(localizadorBlouses);
             blouses.click();
             WebElement blousesname = driver.findElement(localizadorBlousesNombre);
@@ -127,31 +123,27 @@ public class ATCFirefox {
         }
 
         @Test
-        public void ATC05() throws InterruptedException {
+        public void ATC05(){
+            WebDriverWait exwait = new WebDriverWait(driver, Duration.ofSeconds(5));
             boolean resultado5 = false;
             driver.get("http://automationpractice.com/index.php");
             WebElement elementSRC = driver.findElement(localizadorBusqueda);
             elementSRC.click();
             elementSRC.sendKeys("Blouse");
             elementSRC.sendKeys(Keys.RETURN);
-            Thread.sleep(1000);
             WebElement elementBlouseMD2 = driver.findElement(localizadorBlouseMD2);
             elementBlouseMD2.click();
-            Thread.sleep(3000);
             WebElement elementColorBlanco = driver.findElement(localizadorColorBlanco);
             elementColorBlanco.click();
-            Thread.sleep(1000);
             WebElement elementoTalles = driver.findElement(localicadorSelectorTalles);
             elementoTalles.click();
-            Thread.sleep(1000);
             WebElement elementTalleL = driver.findElement(localizadorSelectorTalleL);
             if (elementTalleL.getText().contains("L")){
                 elementTalleL.click();
-                Thread.sleep(1000);
             }
             WebElement elementCarrito = driver.findElement(localizadorBotonCarrito);
             elementCarrito.click();
-            Thread.sleep(7000);
+            exwait.until(ExpectedConditions.elementToBeClickable(localizadorDatosGeneralesCarrito));
             WebElement elementoDatosAdd = driver.findElement(localizadorDatosGeneralesCarrito);
             if (elementoDatosAdd.getText().contains("Product successfully added to your shopping cart") && elementoDatosAdd.getText().contains("Blouse") && elementoDatosAdd.getText().contains("White, L")){
                 resultado5 = true;
