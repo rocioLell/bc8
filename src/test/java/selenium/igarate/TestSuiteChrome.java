@@ -7,8 +7,11 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 
 public class TestSuiteChrome {
@@ -75,8 +78,8 @@ public class TestSuiteChrome {
         driver.get("http://automationpractice.com/index.php");
         WebElement search = driver.findElement(localizadorSearch);
         search.sendKeys("blo");
-        WebDriverWait delay = new WebDriverWait(driver, 10);
-        delay.until(driver -> driver.findElement(localizadoraAutoComplete));
+        WebDriverWait delay = new WebDriverWait(driver, Duration.ofSeconds(5));
+        delay.until(ExpectedConditions.elementToBeClickable(localizadoraAutoComplete));
         WebElement autoComplete = driver.findElement(localizadoraAutoComplete);
         autoComplete.click();
         WebElement blusa = driver.findElement(localizadorBlusa);
@@ -88,8 +91,8 @@ public class TestSuiteChrome {
         driver.get("http://automationpractice.com/index.php");
         WebElement search = driver.findElement(localizadorSearch);
         search.sendKeys("blo");
-        WebDriverWait delay = new WebDriverWait(driver, 10);
-        delay.until(driver -> driver.findElement(localizadoraAutoComplete));
+        WebDriverWait delay = new WebDriverWait(driver, Duration.ofSeconds(5));
+        delay.until(ExpectedConditions.elementToBeClickable(localizadoraAutoComplete));
         WebElement autoComplete = driver.findElement(localizadoraAutoComplete);
         autoComplete.click();
         WebElement dropdown = driver.findElement(localizadorDropdown);
