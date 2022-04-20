@@ -1,5 +1,6 @@
 package selenium.pacevedo;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -7,6 +8,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 import static org.junit.Assert.assertEquals;
 public class EjerciciosTcEdge {
@@ -15,7 +21,11 @@ public class EjerciciosTcEdge {
     public By search = By.xpath("//input[@class=\"search_query form-control ac_input\"]");
     public By lupa = By.xpath("//button[@class=\"btn btn-default button-search\"]");
     public By vestido = By.xpath("//div[@class=\"product-image-container\"]/descendant::img[@title=\"Printed Chiffon Dress\"]");
-    public By autoCompletar = By.xpath("//div[@class=\\\"ac_results\\\"]");
+    public By autoCompletar = By.xpath("//div[@class=\"ac_results\"]");
+    public By talla= By.id("group_1");
+    public By color= By.id("color_8");
+    public By carrito=By.xpath("//p[@id=\"add_to_cart\"]");
+
 
     @BeforeClass
     public static void init() {
@@ -62,11 +72,39 @@ public class EjerciciosTcEdge {
     }
 
     @Test
-    public void home4(){
+    public void home4() {
+        WebDriverWait exWait= new WebDriverWait(driver, Duration.ofSeconds(5));
         driver.get("http://automationpractice.com/");
         WebElement WebElementSearch = driver.findElement(search);
         WebElementSearch.sendKeys("blo");
-        WebElement AutoCompletado = driver.findElement(autoCompletar);
-        AutoCompletado.click();
+        exWait.until(ExpectedConditions.elementToBeClickable(autoCompletar));
+        WebElement webElementAutocompletar= driver.findElement(autoCompletar);
+        webElementAutocompletar.click();
+
+
+    }
+    @Test
+    public void home5() {
+        WebDriverWait exWait= new WebDriverWait(driver,Duration.ofSeconds(10));
+        driver.get("http://automationpractice.com/");
+        WebElement WebElementSearch = driver.findElement(search);
+        WebElementSearch.sendKeys("blo");
+        exWait.until(ExpectedConditions.elementToBeClickable(autoCompletar));
+        WebElement webElementAutocompletar= driver.findElement(autoCompletar);
+        webElementAutocompletar.click();
+        WebElement webElementTalla= driver.findElement(talla);
+        Select elecciontalla= new Select(webElementTalla);
+        elecciontalla.selectByValue("3");
+        WebElement webElementcolor= driver.findElement(color);
+        webElementcolor.click();
+        WebElement webElementCarro= driver.findElement(carrito);
+        webElementCarro.click();
+
+    }
+   @After
+    public void close(){
+        if(driver != null){
+            driver.close();
+        }
     }
 }
