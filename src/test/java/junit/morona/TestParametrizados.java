@@ -8,7 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 @RunWith(value = Parameterized.class)
 public class TestParametrizados {
-    //pruebas para realizar a la multiplicacion
+    /*  Pruebas a realizar para metodo Multiplicacion
+            +*+ = +  -> 5,5,25 -> num1, num2, resultado esperado
+            +*- = -  -> 5,-5,-25
+            -*+ = - -> -5,5,-25
+            -*- = + -> -5,-5,25
+  */
     private int num1,num2,resultado_esperado;
     //construcctor
     public TestParametrizados(int num1,int num2, int resultado_esperado){

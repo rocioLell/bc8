@@ -1,4 +1,4 @@
-package selenium.Ecorrea;
+package selenium.rlell;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
@@ -27,7 +27,7 @@ public class HelloSelenium {
         barraTextoGoogle.sendKeys("TSOFT");
         barraTextoGoogle.submit();
 
-        WebElement linkSitioTsoft = driver.findElement(By.xpath("//*[@id=\"rso\"]/div[1]/div/div/div/div/div/div[1]/a/h3"));
+        WebElement linkSitioTsoft = driver.findElement(By.xpath("//*[@id=\"rso\"]/div[1]/div/div/div/div/div/div/div[1]/a/h3"));
         linkSitioTsoft.click();
         String tituloPaginaTsoft = driver.getTitle();
         System.out.println(tituloPaginaTsoft);
