@@ -37,17 +37,19 @@ public class ManejoDeElementosWeb {
 
     }
     @Test
-    public void dropdown(){//seleccionar datos de barra esapaciadora
-
+    public void dropdown(){
         driver.get("https://the-internet.herokuapp.com/dropdown");
-        WebElement WebElementdropdown = driver.findElement(localizadorDropdown);
-        Select manejoDropDown = new Select(WebElementdropdown);
+        WebElement WebElementDropdown = driver.findElement(localizadorDropdown);
 
+        //libreria Selenium -> webElement -> Select
+        Select manejoDropDown = new Select(WebElementDropdown);
+
+        //operar el select o dropdown
         manejoDropDown.selectByValue("1");
         manejoDropDown.selectByValue("2");
-        manejoDropDown.selectByVisibleText("option 1");
-        manejoDropDown.selectByVisibleText("option 2");
-        manejoDropDown.deselectAll();
+        manejoDropDown.selectByVisibleText("Option 1");
+        manejoDropDown.selectByVisibleText("Option 2");
+
     }
     @Test
     public void menuUI() throws InterruptedException{//localizador de distintos botones
