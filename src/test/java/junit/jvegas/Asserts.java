@@ -42,8 +42,8 @@ public class Asserts {
 
         }
             //convertir arraylist en array
-            String[] arrayPrimitivo1 = arraylist1.toArray(new String[arraylist1,size()]);
-            String[] arrayPrimitivo2 = arraylist2.toArray(new String[arraylist1,size()]);
+            String[] arrayPrimitivo1 = arraylist1.toArray(new String[arraylist1.size()]);
+            String[] arrayPrimitivo2 = arraylist2.toArray(new String[arraylist1.size()]);
             System.out.println(arrayPrimitivo1);
             System.out.println(arrayPrimitivo2);
 
