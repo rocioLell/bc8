@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
@@ -41,7 +42,7 @@ public class GoogleSearshTest {
         searchbox.sendKeys("quality-stream Introduccion a la automatizacion de pruebas de software");//es el texto en la barra de busqueda
         searchbox.submit();//es como dar enter
        /* driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);//espera implicita */
-        WebDriverWait ewait = new WebDriverWait(driver, 10);
+        WebDriverWait ewait = new WebDriverWait(driver, Duration.ofSeconds(10));
         ewait.until(ExpectedConditions.titleContains("quakity-stream"));
 
         assertEquals("quality-stream Introduccion a la automatizacion de pruebas de software",driver.getTitle());

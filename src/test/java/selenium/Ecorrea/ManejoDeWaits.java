@@ -59,7 +59,7 @@ public class ManejoDeWaits {
     }
     @Test
     public void esperaFluent(){
-        FluentWait<WebDriver> fluentWait = new WebDriverWait(driver)
+        FluentWait<WebDriver> fluentWait = new FluentWait<>(driver)
         .withTimeout(Duration.ofSeconds(10))
         .pollingEvery(Duration.ofMillis(100))
                 .withMessage("error de timeput fluent 8c8")
