@@ -27,6 +27,9 @@ public class EjerciciosTc {
     //atributos
     public static WebDriver driver;
 
+
+
+
     public By search = By.xpath("//input[@class=\"search_query form-control ac_input\"]");
     public By lupa = By.xpath("//button[@class=\"btn btn-default button-search\"]");
     public By vestido = By.xpath("//div[@class=\"product-image-container\"]/descendant::img[@title=\"Printed Chiffon Dress\"]");
