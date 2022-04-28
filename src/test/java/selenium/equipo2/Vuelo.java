@@ -1,4 +1,4 @@
-package selenium.Equipo2;
+package selenium.equipo2;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 
