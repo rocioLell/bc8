@@ -40,7 +40,7 @@ public class Paquetes {
     @BeforeClass
     public static void init() {
         WebDriverManager.chromedriver().setup();
-        // WebDriverManager.edgedriver().setup();
+
     }
 
     @Before
@@ -54,11 +54,18 @@ public class Paquetes {
     @Test
     public void ATC01PQ()throws InterruptedException{
 
+        // Ingresamos a la Pagina
         driver.get("https://www.viajesfalabella.cl/");
+
+        // Seleccionamos el Apartados Paquetes
         WebElement webElementPaquete= driver.findElement(paquete);
         webElementPaquete.click();
+
+        //Seleccionar Vuelo + Alojamiento
         WebElement webElementVueloAlojamiento= driver.findElement(vueloAlojamiento);
         webElementVueloAlojamiento.click();
+
+        //Seleccion de Origen y Destino
         WebElement webElementOrigen= driver.findElement(origen);
         webElementOrigen.sendKeys("Chile");
         WebDriverWait exwait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -70,24 +77,30 @@ public class Paquetes {
         exwait.until(ExpectedConditions.elementToBeClickable(resultado));
         webElementResultado.click();
 
+        //Aceptar Cookie
         WebElement webElementAceptarCookie= driver.findElement(aceptarCookie);
         webElementAceptarCookie.click();
-
+        // Seleccion de Fecha Ida y Vuelta
         WebElement webElementFechaIda=driver.findElement(fechaIda);
         webElementFechaIda.click();
         WebElement webElementSeleccionIda= driver.findElement(seleccionIda);
-        webElementSeleccionIda.click();//hasta aca perfecto
+        webElementSeleccionIda.click();
         WebElement webElementcontenedor20del05= driver.findElement(contenedor20del05);
         webElementcontenedor20del05.click();
+
+
+        // Seleccion de Habitaciones
         WebElement webElementHabitaciones= driver.findElement(divHabitaciones);
         webElementHabitaciones.click();
-
         WebElement webElementBotonMenosHabitaciones=driver.findElement(botonMenosHabitaciones);
         webElementBotonMenosHabitaciones.click();
 
+        // Seleccionar Realizar la Busqueda
         WebElement webElementBotonBuscar= driver.findElement(botonBuscar);
         webElementBotonBuscar.click();
         exwait.until(ExpectedConditions.elementToBeClickable(resultado));
+
+        //Elegir Paquete
         WebElement webElementPaqueteChile= driver.findElement(paqueteSantiagoChile);
         webElementPaqueteChile.click();
 
@@ -98,14 +111,18 @@ public class Paquetes {
 
     @Test
     public void ATC03PQ()throws InterruptedException{
-
+        // Ingresamos a la Pagina
         driver.get("https://www.viajesfalabella.cl/");
+        // Aceptar las Cookie
         WebElement webElementAceptarCookie= driver.findElement(aceptarCookie);
         webElementAceptarCookie.click();
+        // Seleccionamos el Apartados Paquetes
         WebElement webElementPaquete= driver.findElement(paquete);
         webElementPaquete.click();
+        // Seleccionar Vuelo + Alojamiento
         WebElement webElementVueloAlojamiento= driver.findElement(vueloAlojamiento);
         webElementVueloAlojamiento.click();
+        // Elegir Origen y Destino
         WebElement webElementOrigen= driver.findElement(origen);
         webElementOrigen.sendKeys("Chile");
         WebDriverWait exwait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -116,24 +133,33 @@ public class Paquetes {
         webElementDestino.sendKeys("Buenos Aires");
         exwait.until(ExpectedConditions.elementToBeClickable(resultado));
         webElementResultado.click();
+        // Seleccionar Fecha
         WebElement webElementFechaIda=driver.findElement(fechaIda);
         webElementFechaIda.click();
         WebElement webElementSeleccionIda= driver.findElement(seleccionIda);
-        webElementSeleccionIda.click();//hasta aca perfecto
+        webElementSeleccionIda.click();
         WebElement webElementcontenedor20del05= driver.findElement(contenedor20del05);
         webElementcontenedor20del05.click();
 
-
+       // Seleccionar Opciones Avanzadas
         WebElement webElementMostrarOpcionesAvanzadas= driver.findElement(mostrarOpcionesAvanzadas);
         webElementMostrarOpcionesAvanzadas.click();
+
+        // Seleccionar Alojamiento en otra Ciudad
         WebElement webElementCkeckOtraCiudad= driver.findElement(checkboxAlojamientoOtraCiudad);
         webElementCkeckOtraCiudad.click();
+
+        //Elegir Destino en Otra Ciudad
         WebElement webElementDestinoDos=driver.findElement(destinoDos);
         webElementDestinoDos.sendKeys("Mar del Plata, Buenos Aires, Argentina");
         exwait.until(ExpectedConditions.elementToBeClickable(resultado));
         webElementResultado.click();
+
+        //Buscar
         WebElement webElementBotonBuscar= driver.findElement(botonBuscar);
         webElementBotonBuscar.click();
+
+        // Seleccionar Paquete
         WebElement webElementPaqueteMarDelPlata= driver.findElement(paqueteMarDelPlata);
         webElementPaqueteMarDelPlata.click();
 

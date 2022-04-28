@@ -7,19 +7,13 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.ISelect;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.lang.reflect.Type;
 import java.time.Duration;
-import java.util.List;
+
 public class Vuelo {
 
 
@@ -55,43 +49,58 @@ public class Vuelo {
 
     @Test
     public void ATC01() {
+        //ingresar a la Pagina
         driver.get("https://www.viajesfalabella.cl/");
+        // Ingresar al Apartado  Vuelo
         WebElement webElementVuelo = driver.findElement(vuelo);
         webElementVuelo.click();
+        // Seleccionar Multidestino
         WebElement webElementMultidestino= driver.findElement(multidestino);
         webElementMultidestino.click();
 
     }
     @Test
     public void ATC02() {
+
+        //ingresar a la Pagina
         driver.get("https://www.viajesfalabella.cl/");
+
+        //Seleccionar el Apartado Vuelo
         WebElement webElementVuelo = driver.findElement(vuelo);
         webElementVuelo.click();
+
+        //Seleccionar Solo Ida
         WebElement webElementSoloIda= driver.findElement(soloIda);
         webElementSoloIda.click();
+
+        //Ingresaer Origen
         WebElement webElementOrigen= driver.findElement(origen);
         webElementOrigen.sendKeys("Santiago de Chile, Chile");
         WebDriverWait exwait = new WebDriverWait(driver, Duration.ofSeconds(5));
         exwait.until(ExpectedConditions.elementToBeClickable(resultado));
         WebElement webElementResultado= driver.findElement(resultado);
         webElementResultado.click();
+
+        // Ingresar Destino
         WebElement webElementDestino= driver.findElement(destino);
         webElementDestino.sendKeys("Buenos Aires, Argentina");
         exwait.until(ExpectedConditions.elementToBeClickable(resultado));
         webElementResultado.click();
+
+        //Seleccionar Fecha
         WebElement webElementSinFecha= driver.findElement(sinFecha);
         webElementSinFecha.click();
+
+        //buscar Vuelo
         WebElement webElementBuscar= driver.findElement(buscar);
         webElementBuscar.click();
+
+        // Seleccionar Vuelo
         WebElement webElementSiguiente= driver.findElement(siguiente);
         webElementSiguiente.click();
 
 
     }
-
-
-
-
 
     @After public void close(){
     if(driver != null){
