@@ -1,6 +1,6 @@
 package selenium.Equipo2;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import static org.junit.Assert.*;
+
 
 import org.junit.After;
 import org.junit.Before;
