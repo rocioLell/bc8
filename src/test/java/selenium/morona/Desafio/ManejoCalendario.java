@@ -20,13 +20,13 @@ public class ManejoCalendario {
     public By localizadorCalendarioEntrada = By.xpath("//input[@placeholder=\"Entrada\"]");
 
     @BeforeClass
-    public static void init(){
+    public static void init() {
         WebDriverManager.chromedriver().setup();
 
     }
 
     @Before
-    public void setUp(){
+    public void setUp() {
         //preparacion de Driver = Navegador
         driver = new ChromeDriver(); //Chrome -> navegador
         driver.manage().deleteAllCookies();
@@ -34,9 +34,9 @@ public class ManejoCalendario {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
     }
+
     @Test
     public void Calendario() {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
         //Ingresamos a la página
         driver.get("https://www.viajesfalabella.cl/");
 
@@ -45,35 +45,29 @@ public class ManejoCalendario {
         seccionAlojamientos.click();
 
         String mes = "Julio2022";
-        String dia= "1";
+        String dia = "1";
+        String diaSA = "8";
 
         WebElement calendario = driver.findElement(localizadorCalendarioEntrada);
         calendario.click();
 
-            List<WebElement> meses = driver.findElements(By.xpath("//div[@class=\"_dpmg2--month-title\"]"));
-            for (int i = 0; i < meses.size(); i++) {
-                String mesActual =meses.get(i).getText();
-                driver.findElement(By.xpath("//div[@class=\"_dpmg2--controls-next\"]")).click();
-                if (mesActual.equalsIgnoreCase(mes)){
-                    break;
-                }
-            }
-            
-            List<WebElement> dias = driver.findElements(By.xpath("//span[@class=\"_dpmg2--date _dpmg2--available\"]"));
-        for (WebElement elemento:dias)
-        {
-            String diaActual = elemento.getText();
-            if (diaActual.equals(dia)){
-                elemento.click();
+        List<WebElement> meses = driver.findElements(By.xpath("//div[@class=\"_dpmg2--month-title\"]"));
+        for (int i = 0; i < meses.size(); i++) {
+            String mesActual = meses.get(i).getText();
+            driver.findElement(By.xpath("//div[@class=\"_dpmg2--controls-next\"]")).click();
+            if (mesActual.equalsIgnoreCase(mes)) {
                 break;
             }
-
         }
 
-
-
-
-
+        List<WebElement> dias = driver.findElements(By.xpath("//span[@class=\"_dpmg2--date _dpmg2--available\"]"));
+        for (WebElement elemento : dias) {
+            String diaEntrada = elemento.getText();
+            if (diaEntrada.equals(dia)) {
+                elemento.click();
+            }
+            break;
+        }
     }
-
 }
+

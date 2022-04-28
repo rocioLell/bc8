@@ -1,4 +1,4 @@
-package selenium.morona.Desafio;
+package selenium.equipo2;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Before;
