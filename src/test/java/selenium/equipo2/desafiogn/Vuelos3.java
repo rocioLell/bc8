@@ -1,4 +1,4 @@
-package selenium.gneyra.desafio;
+package selenium.equipo2.desafiogn;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Before;
