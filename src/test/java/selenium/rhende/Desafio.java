@@ -32,7 +32,7 @@ public class Desafio<localizadorCalendario> {
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
     }
-
+/*
     @Test
     public void Calendario(){
         driver.get("https://www.viajesfalabella.cl/vuelos/");
@@ -44,7 +44,7 @@ public class Desafio<localizadorCalendario> {
 
 
     }
-
+*/
 
     //cerramos la instancia del driver
    /* @After
