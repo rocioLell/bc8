@@ -1,6 +1,7 @@
 package selenium.equipo2;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -42,13 +43,13 @@ public class AlojamientosChromeVersion {
     public By localizadorBtnAplicar = By.xpath("//a[@class=\"_pnlpk-apply-button sbox-3-btn -primary _pnlpk-panel__button--link-right -lg\"]");
     public By localizadorOpcion1 = By.xpath("(//em[text()=\"Ver detalle\"])[1]");
     public By localizadorPopUp = By.xpath("//i[@class=\"tooltip-close eva-3-icon-close\"]");
-    public By localizadormensajeCookies= By.xpath("//em[@class=\"btn-text\"]");
+    public By localizadormensajeCookies = By.xpath("//em[@class=\"btn-text\"]");
     public By localizadorHabitaciones = By.xpath("(//aloha-radio-button[@name=\"roompack\"])[1]");
     public By localizadorBtnReservarAhora = By.xpath("//button[@class=\"eva-3-btn -md -secondary -eva-3-fwidth\"]");
     public By localizadorActividad = By.xpath("(//div[@class=\"highlight-card\"])[1]");
     public By localizadorActividad2 = By.xpath("//button[@class=\"eva-3-btn -eva-3-fwidth -md -primary\"]");
     public By localizadorBtnSiguiente = By.xpath("//button[@class=\"eva-3-btn -lg pricebox-sticky-button -secondary\"]");
-    public By localizadorAgregarAlViaje= By.xpath("//button[@class=\"-md -eva-3-fwidth -eva-3-pl-sm -eva-3-pr-sm eva-3-btn -primary\"]");
+    public By localizadorAgregarAlViaje = By.xpath("//button[@class=\"-md -eva-3-fwidth -eva-3-pl-sm -eva-3-pr-sm eva-3-btn -primary\"]");
     public By localizadorResultadoBusqueda = By.xpath("(//ul[contains(li,perú)])[13]");
     public By localizadorDiaEntrada = By.cssSelector("body > div.sbox-ui-datepicker-container.sbox-v4-components > div > div._dpmg2--months > div:nth-child(2) > div._dpmg2--dates > span:nth-child(1)");
     public By localizadorHotel = By.xpath("(//span[text()=\"Hotel Club La Serena\"])[1]");
@@ -57,22 +58,21 @@ public class AlojamientosChromeVersion {
 
     public By localizadorSelectorMoneda = By.xpath("(//select[@class=\"select-tag\"])[1]");
     public By localizadorAlquileresV = By.xpath("(//div[@class=\"sub-nav-label-content\"])[3]");
-    public By localizadorPrecioMin =  By.xpath("(//input[@type=\"number\"])[1]");
+    public By localizadorPrecioMin = By.xpath("(//input[@type=\"number\"])[1]");
     public By slider = By.xpath("//div[@class=\"slider-handler -right\"]");
     public By localizadorBtnAplicarPrecio = By.xpath("(//button[@class=\"eva-3-btn -md -primary\"])[1]");
-    public By localizadorCheckboxHot= By.cssSelector("body > aloha-app-root > aloha-results > div > div > div > div.filters-column > aloha-filter-list > div > ul > li:nth-child(4) > aloha-filter > aloha-checkbox-filter > ul > li:nth-child(6) > span > span.filters-checkbox > aloha-checkbox > span > label > i");
+    public By localizadorCheckboxHot = By.cssSelector("body > aloha-app-root > aloha-results > div > div > div > div.filters-column > aloha-filter-list > div > ul > li:nth-child(4) > aloha-filter > aloha-checkbox-filter > ul > li:nth-child(6) > span > span.filters-checkbox > aloha-checkbox > span > label > i");
     public By localizadorCheckbox3E = By.cssSelector("body > aloha-app-root > aloha-results > div > div > div > div.filters-column > aloha-filter-list > div > ul > li:nth-child(6) > aloha-filter > aloha-checkbox-filter > ul > li:nth-child(4) > span > span.filters-checkbox > aloha-checkbox > span > label > i");
-    public By localizadorDesayuno = By.xpath("(//i[@class=\"checkbox-check eva-3-icon-checkmark filters-checkbox-left\"])[35]");
-    public By localizadorBar= By.cssSelector("body > aloha-app-root > aloha-results > div > div > div > div.filters-column > aloha-filter-list > div > ul > li:nth-child(10) > aloha-filter > aloha-checkbox-filter > ul > li:nth-child(2) > span > span.filters-checkbox > aloha-checkbox > span > label > i");
-    public By localizadorCheckExpress = By.cssSelector("body > aloha-app-root > aloha-results > div > div > div > div.filters-column > aloha-filter-list > div > ul > li:nth-child(10) > aloha-filter > aloha-checkbox-filter > ul > li:nth-child(4) > span > span.filters-checkbox > aloha-checkbox > span > label > i");
-    public By localizadorWifi = By.cssSelector("body > aloha-app-root > aloha-results > div > div > div > div.filters-column > aloha-filter-list > div > ul > li:nth-child(10) > aloha-filter > aloha-checkbox-filter > ul > li:nth-child(5) > span > span.filters-checkbox > aloha-checkbox > span > label > i");
-    public By localizadorServicioEquipaje = By.cssSelector("body > aloha-app-root > aloha-results > div > div > div > div.filters-column > aloha-filter-list > div > ul > li:nth-child(10) > aloha-filter > aloha-checkbox-filter > ul > li:nth-child(6) > span > span.filters-checkbox > aloha-checkbox > span > label > i");
+    public By localizadorDesayuno = By.cssSelector("body > aloha-app-root > aloha-results > div > div > div > div.filters-column > aloha-filter-list > div > ul > li:nth-child(9) > aloha-filter > aloha-checkbox-filter > ul > li:nth-child(3) > span > span.filters-checkbox > aloha-checkbox > span > label > i");
+    public By localizadorBar = By.cssSelector("body > aloha-app-root > aloha-results > div > div > div > div.filters-column > aloha-filter-list > div > ul > li:nth-child(9) > aloha-filter > aloha-checkbox-filter > ul > li:nth-child(2) > span > span.filters-checkbox > aloha-checkbox > span > label > i");
+    public By localizadorCheckExpress = By.cssSelector("body > aloha-app-root > aloha-results > div > div > div > div.filters-column > aloha-filter-list > div > ul > li:nth-child(9) > aloha-filter > aloha-checkbox-filter > ul > li:nth-child(4) > span > span.filters-checkbox > aloha-checkbox > span > label > i");
+    public By localizadorWifi = By.cssSelector("body > aloha-app-root > aloha-results > div > div > div > div.filters-column > aloha-filter-list > div > ul > li:nth-child(9) > aloha-filter > aloha-checkbox-filter > ul > li:nth-child(5) > span > span.filters-checkbox > aloha-checkbox > span > label > i");
+    public By localizadorServicioEquipaje = By.cssSelector("body > aloha-app-root > aloha-results > div > div > div > div.filters-column > aloha-filter-list > div > ul > li:nth-child(9) > aloha-filter > aloha-checkbox-filter > ul > li:nth-child(6) > span > span.filters-checkbox > aloha-checkbox > span > label > i");
     public By localizadorResultadoHotel = By.xpath("//div[@class=\"eva-3-cluster-gallery -eva-3-bc-white -eva-3-shadow-line-hover\"]");
 
 
-
     //ATC-6AL
-     By bannerOferta = By.xpath("(//a[@class=\"link\"])[3]");
+    By bannerOferta = By.xpath("(//a[@class=\"link\"])[3]");
     By hotelCaribe = By.xpath("(//div[@class=\"offer-module-container\"] //descendant:: div[@class=\"offer-cards-container offers-first-row\"] //descendant:: div[@class=\"offer-card-container\"])[1]");
     By contenedor10del05 = By.xpath("//div[@class=\"_dpmg2--wrapper _dpmg2--roundtrip _dpmg2--show-info _dpmg2--show\"] //descendant:: div[@data-month=\"2022-05\"] //descendant:: span[@class=\"_dpmg2--date _dpmg2--available\"] //descendant:: span[text()=\"10\"]");
     By contenedor20del05 = By.xpath("//div[@class=\"_dpmg2--month _dpmg2--o-7 _dpmg2--has-start-range _dpmg2--month-active\"] //descendant:: span[@class=\"_dpmg2--date _dpmg2--available _dpmg2--nights-tooltip\"] //descendant:: span[text()=\"20\"]");
@@ -91,7 +91,6 @@ public class AlojamientosChromeVersion {
     By buttonAgregarTraslado = By.xpath("//div[@class=\"pricebox-top-container\"] //descendant:: button[@class=\"eva-3-btn -eva-3-fwidth -md -primary\"]");
     By buttonSiguiente = By.xpath("//div[@class=\"-green -loyalty -with-info eva-3-pricebox-sticky eva-3-shadow pricebox-sticky xs\"] //descendant:: button[@class=\"eva-3-btn -lg pricebox-sticky-button -secondary\"]");
     By tituloH2confirmacion = By.xpath("//h2[@class=\"chk-main-title -eva-3-hide-small -eva-3-hide-medium\"]");
-    
 
 
     public static WebDriver driver;
@@ -133,8 +132,9 @@ public class AlojamientosChromeVersion {
         btnBuscar.click();
 
     }
+
     @Test
-    public void ATC02AL(){
+    public void ATC02AL() {
         //Ingresamos a la página
         driver.get("https://www.viajesfalabella.cl/");
 
@@ -152,20 +152,20 @@ public class AlojamientosChromeVersion {
 
         //Validamos la aparición de los mensajes
         WebElement msjEntrada = driver.findElement(localizadorMsjEntrada);
-        if (msjEntrada.getText().contains("Ingresa una fecha de entrada.")){
+        if (msjEntrada.getText().contains("Ingresa una fecha de entrada.")) {
             System.out.println("El mensaje Ingresa una fecha de entrada se muestra correctamente.");
 
         }
 
         WebElement msjSalida = driver.findElement(localizadorMsjSalida);
-        if (msjSalida.getText().contains("Ingresa una fecha de salida.")){
+        if (msjSalida.getText().contains("Ingresa una fecha de salida.")) {
             System.out.println("El mensaje Ingresa una fecha de salida se muestra correctamente.");
 
         }
     }
 
     @Test
-    public void ATC05AL()  {
+    public void ATC05AL() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         //Ingresamos a la página
         driver.get("https://www.viajesfalabella.cl/");
@@ -190,7 +190,7 @@ public class AlojamientosChromeVersion {
         flechanext.click();
         flechanext.click();
 
-        WebElement diaEntrada= driver.findElement(localizadorDia);
+        WebElement diaEntrada = driver.findElement(localizadorDia);
         diaEntrada.click();
         WebElement diaSalida = driver.findElement(localizadorDiaSalida);
         diaSalida.click();
@@ -203,7 +203,7 @@ public class AlojamientosChromeVersion {
 
         //aplicamos Cambios
         WebElement btnAplicar = driver.findElement(localizadorBtnAplicar);
-        js.executeScript("arguments[0].scrollIntoView();",btnAplicar);
+        js.executeScript("arguments[0].scrollIntoView();", btnAplicar);
         btnAplicar.click();
         //Click en buscar
         WebElement btnBuscar = driver.findElement(localizadorBtnBuscar);
@@ -222,8 +222,8 @@ public class AlojamientosChromeVersion {
         //Seleccionar habitacion
         String mainTab = driver.getWindowHandle();
         Set<String> handles = driver.getWindowHandles();
-        for (String actual: handles) {
-            if (!actual.equalsIgnoreCase(mainTab)){
+        for (String actual : handles) {
+            if (!actual.equalsIgnoreCase(mainTab)) {
                 driver.switchTo().window(actual);
             }
 
@@ -237,10 +237,10 @@ public class AlojamientosChromeVersion {
         //Seleccionar actividad
 
         WebElement seleccionActividad = driver.findElement(localizadorActividad);
-        js.executeScript("arguments[0].scrollIntoView();",seleccionActividad);
+        js.executeScript("arguments[0].scrollIntoView();", seleccionActividad);
         seleccionActividad.click();
         WebElement agregarActividad = driver.findElement(localizadorAgregarAlViaje);
-        js.executeScript("arguments[0].scrollIntoView();",agregarActividad);
+        js.executeScript("arguments[0].scrollIntoView();", agregarActividad);
         agregarActividad.click();
 
         //Siguiente
@@ -285,7 +285,7 @@ public class AlojamientosChromeVersion {
         cantidadAdultos.click();
 
         WebElement btnAplicar = driver.findElement(localizadorBtnAplicar);
-        js.executeScript("arguments[0].scrollIntoView();",btnAplicar);
+        js.executeScript("arguments[0].scrollIntoView();", btnAplicar);
         btnAplicar.click();
 
         //Click en buscar
@@ -294,14 +294,14 @@ public class AlojamientosChromeVersion {
 
         //Seleccionar Hotel
         WebElement seleccionHotel = driver.findElement(localizadorHotel);
-        js.executeScript("arguments[0].scrollIntoView();",seleccionHotel);
+        js.executeScript("arguments[0].scrollIntoView();", seleccionHotel);
         seleccionHotel.click();
 
         //Seleccionar habitacion
         String mainTab = driver.getWindowHandle();
         Set<String> handles = driver.getWindowHandles();
-        for (String actual: handles) {
-            if (!actual.equalsIgnoreCase(mainTab)){
+        for (String actual : handles) {
+            if (!actual.equalsIgnoreCase(mainTab)) {
                 driver.switchTo().window(actual);
             }
         }
@@ -316,7 +316,7 @@ public class AlojamientosChromeVersion {
         //Seleccionar Tour/actividad
 
         WebElement actividad = driver.findElement(localizadorActividad2);
-        js.executeScript("arguments[0].scrollIntoView();",actividad);
+        js.executeScript("arguments[0].scrollIntoView();", actividad);
         actividad.click();
 
         //Click en siguiente
@@ -330,7 +330,7 @@ public class AlojamientosChromeVersion {
     @Test
     public void ATC04AL() throws InterruptedException {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        WebDriverWait explicita =new WebDriverWait(driver,Duration.ofSeconds(5));
+        WebDriverWait explicita = new WebDriverWait(driver, Duration.ofSeconds(5));
         //Ingresamos a la página
         driver.get("https://www.viajesfalabella.cl/");
 
@@ -361,7 +361,7 @@ public class AlojamientosChromeVersion {
         cantidadAdultos.click();
 
         WebElement btnAplicar = driver.findElement(localizadorBtnAplicar);
-        js.executeScript("arguments[0].scrollIntoView();",btnAplicar);
+        js.executeScript("arguments[0].scrollIntoView();", btnAplicar);
         btnAplicar.click();
 
         //Click en buscar
@@ -375,7 +375,7 @@ public class AlojamientosChromeVersion {
         manejoSeleccionMoneda.selectByVisibleText("Dólar");
 
         //Seccion Alquileres Vacacionales
-        WebElement seleccionAlquileresV= driver.findElement(localizadorAlquileresV);
+        WebElement seleccionAlquileresV = driver.findElement(localizadorAlquileresV);
         seleccionAlquileresV.click();
 
 
@@ -387,7 +387,7 @@ public class AlojamientosChromeVersion {
 
         WebElement sliderMax = driver.findElement(slider);
         Actions action = new Actions(driver);
-        action.dragAndDropBy(sliderMax,-199,0).perform();
+        action.dragAndDropBy(sliderMax, -199, 0).perform();
 
         WebElement btnAplicarPrecio = driver.findElement(localizadorBtnAplicarPrecio);
         btnAplicarPrecio.click();
@@ -396,54 +396,53 @@ public class AlojamientosChromeVersion {
         //Seleccionar Filtros
 
         WebElement checkboxHot = driver.findElement(localizadorCheckboxHot);
-        js.executeScript("arguments[0].scrollIntoView();",checkboxHot);
+        js.executeScript("arguments[0].scrollIntoView();", checkboxHot);
         checkboxHot.click();
 
         WebElement estrellas = driver.findElement(localizadorCheckbox3E);
-        js.executeScript("arguments[0].scrollIntoView();",estrellas);
+        js.executeScript("arguments[0].scrollIntoView();", estrellas);
         estrellas.click();
 
         Thread.sleep(1000);
-        WebElement desayuno= driver.findElement(localizadorDesayuno);
-        explicita.until(ExpectedConditions.elementToBeClickable(desayuno));
-        js.executeScript("arguments[0].scrollIntoView();",desayuno);
+        WebElement desayuno = driver.findElement(localizadorDesayuno);
+        js.executeScript("arguments[0].scrollIntoView();", desayuno);
         desayuno.click();
 
         Thread.sleep(1000);
 
         WebElement bar = driver.findElement(localizadorBar);
-        js.executeScript("arguments[0].scrollIntoView();",bar);
+        js.executeScript("arguments[0].scrollIntoView();", bar);
         bar.click();
 
         Thread.sleep(1000);
 
         WebElement checkExpress = driver.findElement(localizadorCheckExpress);
-        js.executeScript("arguments[0].scrollIntoView();",checkExpress);
+        js.executeScript("arguments[0].scrollIntoView();", checkExpress);
         checkExpress.click();
 
         Thread.sleep(1000);
 
-        WebElement wifi= driver.findElement(localizadorWifi);
-        js.executeScript("arguments[0].scrollIntoView();",wifi);
+        WebElement wifi = driver.findElement(localizadorWifi);
+        js.executeScript("arguments[0].scrollIntoView();", wifi);
         wifi.click();
 
         Thread.sleep(1000);
 
         WebElement servicioDeEquipaje = driver.findElement(localizadorServicioEquipaje);
-        js.executeScript("arguments[0].scrollIntoView();",servicioDeEquipaje);
+        js.executeScript("arguments[0].scrollIntoView();", servicioDeEquipaje);
         servicioDeEquipaje.click();
 
         //Seleccionamos Hotel
 
         WebElement resultadoHotel = driver.findElement(localizadorResultadoHotel);
-        js.executeScript("arguments[0].scrollIntoView();",resultadoHotel);
+        js.executeScript("arguments[0].scrollIntoView();", resultadoHotel);
         resultadoHotel.click();
 
     }
 
 
     @Test
-    public void ATC06AL(){
+    public void ATC06AL() {
 
         driver.get("https://www.viajesfalabella.cl/");
         WebDriverWait exwait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -455,12 +454,13 @@ public class AlojamientosChromeVersion {
         botonAlojamiento.click();
 
         WebElement presionarBannerOferta = driver.findElement(bannerOferta);
+        js.executeScript("arguments[0].scrollIntoView();", presionarBannerOferta);
         presionarBannerOferta.click();
 
         WebElement presionarHotelCaribe = driver.findElement(hotelCaribe);
         presionarHotelCaribe.click();
 
-        ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+        ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
 
         WebElement fechaEntrada = driver.findElement(localizadorCalendarioEntrada);
@@ -468,11 +468,11 @@ public class AlojamientosChromeVersion {
 
 
         WebElement fecha10de05 = driver.findElement(contenedor10del05);
-        js.executeScript("arguments[0].scrollIntoView();",fecha10de05 );
+        js.executeScript("arguments[0].scrollIntoView();", fecha10de05);
         fecha10de05.click();
 
         WebElement fecha20de05 = driver.findElement(contenedor20del05);
-        js.executeScript("arguments[0].scrollIntoView();",fecha20de05 );
+        js.executeScript("arguments[0].scrollIntoView();", fecha20de05);
         fecha20de05.click();
 
         WebElement habitaciones = driver.findElement(divHabitaciones);
@@ -489,27 +489,27 @@ public class AlojamientosChromeVersion {
 
 
         WebElement primerHotelDisp = driver.findElement(primerHotel);
-        js.executeScript("arguments[0].scrollIntoView();",primerHotelDisp);
+        js.executeScript("arguments[0].scrollIntoView();", primerHotelDisp);
         primerHotelDisp.click();
 
-        ArrayList<String> tabs3 = new ArrayList<String> (driver.getWindowHandles());
+        ArrayList<String> tabs3 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs3.get(2));
 
-      //  js.executeScript("window.scrollBy(0,1000)"); Para scrollear por pixel, pero en este caso
+        //  js.executeScript("window.scrollBy(0,1000)"); Para scrollear por pixel, pero en este caso
         //no nos sirve
 
         WebElement habitacionesDisponibles = driver.findElement(primerHabitacionDisp);
-        js.executeScript("arguments[0].scrollIntoView();",habitacionesDisponibles);
+        js.executeScript("arguments[0].scrollIntoView();", habitacionesDisponibles);
         WebElement resrAhora = driver.findElement(reservarAhora);
         exwait.until(ExpectedConditions.elementToBeClickable(resrAhora));
         resrAhora.click();
 
         WebElement primerActDisp = driver.findElement(primerActividadDisp);
-        js.executeScript("arguments[0].scrollIntoView();",primerActDisp);
+        js.executeScript("arguments[0].scrollIntoView();", primerActDisp);
         primerActDisp.click();
 
         WebElement horaLleg = driver.findElement(horaLlegada);
-        js.executeScript("arguments[0].scrollIntoView();",horaLleg);
+        js.executeScript("arguments[0].scrollIntoView();", horaLleg);
         horaLleg.click();
 
         WebElement horaChrLle = driver.findElement(horaoptionLlegada);
@@ -525,18 +525,25 @@ public class AlojamientosChromeVersion {
         trasladoBuscar.click();
 
         WebElement agregarTraslado = driver.findElement(buttonAgregarTraslado);
-        js.executeScript("arguments[0].scrollIntoView();",agregarTraslado);
+        js.executeScript("arguments[0].scrollIntoView();", agregarTraslado);
         agregarTraslado.click();
 
         WebElement siguiente = driver.findElement(buttonSiguiente);
         siguiente.click();
 
         WebElement tituloh2 = driver.findElement(tituloH2confirmacion);
-        if (tituloh2.getText().contains("¡Falta poco! Completa tus datos y finaliza tu compra")){
+        if (tituloh2.getText().contains("¡Falta poco! Completa tus datos y finaliza tu compra")) {
             resultadoT6 = true;
         }
         assertTrue(resultadoT6);
 
     }
 
+    @After
+    public void close() {
+        if (driver != null) {
+            driver.close();
+        }
+    }
 }
+
