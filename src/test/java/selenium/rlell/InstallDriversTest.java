@@ -8,9 +8,9 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
-
 public class InstallDriversTest {
-    @Test
+
+@Test
     public void chromeSession() {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
@@ -39,5 +39,3 @@ public class InstallDriversTest {
         driver.quit();
     }
 }
-
-
