@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
-import java.awt.*;
+
 import java.util.List;
 
 public class ManejoDeElementosWeb {
@@ -21,7 +21,11 @@ public class ManejoDeElementosWeb {
     public By localizadorBtnEnabled = By.xpath("//a[text()=\"Enabled\"]");
     public By localizadorBtnDownloads = By.id("ui-id-4");
     public By getLocalizadorBtnPdf = By.xpath("//a[@href=\"/download/jqueryui/menu/menu.pdf\"]");
-    public By localizadoresCheckBoxes = By.xpath("//from[@id=\"checkboxes\"]");
+    public By localizadoresCheckBoxes = By.xpath("//form[@id=\"checkboxes\"]//input");
+    public By localizadorIframes = By.tagName("iframe");
+    public By localizadorEditorTexto = By.id("tinymce");
+    public By localizadorWebTables = By.tagName("table");
+
 
     @BeforeClass
     public static void init(){
@@ -70,6 +74,57 @@ public class ManejoDeElementosWeb {
         for (WebElement chk:checkboxes) {
             chk.click();
         }
+    }
+
+    @Test
+    public void iframes(){
+        driver.get("https://the-internet.herokuapp.com/tinymce");
+        List<WebElement> iframes = driver.findElements(localizadorIframes);
+        //cambiar de frame
+        driver.switchTo().frame(iframes.get(0));
+        WebElement editorTexto = driver.findElement(localizadorEditorTexto);
+        editorTexto.clear();
+        editorTexto.sendKeys("Hola mundo");
+    }
+
+    @Test
+    public void webTable(){
+        driver.get("https://the-internet.herokuapp.com/tables");
+        List <WebElement> webTables = driver.findElements(localizadorWebTables);
+        //cuantas columnas tiene la tabla 1
+        List<WebElement> columns = webTables.get(0).findElement(By.tagName("thead")).findElements(By.tagName("th"));
+
+        // 2 clicks para ordenar por mayor deuda
+        if(columns.get(3).getText().equals("Due")){
+            columns.get(3).click();
+            columns.get(3).click();
+        }
+        // obtener los datos de la primera fila ordenada
+        List <WebElement> rows = webTables.get(0).findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+        String name = rows.get(0).findElements(By.tagName("td")).get(1).getText();
+        String lastname = rows.get(0).findElements(By.tagName("td")).get(0).getText();
+        String due = rows.get(0).findElements(By.tagName("td")).get(2).getText();
+        System.out.println("La deuda mayor es de Nombre: " + name + " Apellido: " + lastname+ " Deuda: " + due);
+    }
+
+    @Test
+    public void webTable2(){
+        driver.get("https://the-internet.herokuapp.com/tables");
+        List <WebElement> webTables = driver.findElements(localizadorWebTables);
+        //cuantas columnas tiene la tabla 2
+        List<WebElement> columns = webTables.get(1).findElement(By.tagName("thead")).findElements(By.tagName("th"));
+
+        // 2 clicks para ordenar por mayor deuda
+        if(columns.get(1).getText().equals("First Name")){
+            columns.get(1).click();
+        }
+        List <WebElement> rows = webTables.get(1).findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+        String name1= rows.get(0).findElements(By.tagName("td")).get(1).getText();
+        String name2= rows.get(1).findElements(By.tagName("td")).get(1).getText();
+        String name3= rows.get(2).findElements(By.tagName("td")).get(1).getText();
+        String name4= rows.get(3).findElements(By.tagName("td")).get(1).getText();
+        System.out.println("Los nombres de los deudores ordenado alfabeticamente es : " + name1 + " " + name2 + " " + name3 + " " + name4);
+
     }
 
     @After

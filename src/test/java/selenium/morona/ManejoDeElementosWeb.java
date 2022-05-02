@@ -1,5 +1,4 @@
-package selenium.earaya;
-
+package selenium.morona;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
@@ -22,9 +21,9 @@ public class ManejoDeElementosWeb {
     public By localizadorBtnDownload = By.id("ui-id-4");
     public By localizadorBtnPDF = By.xpath("//a[@href=\"/download/jqueryui/menu/menu.pdf\"]");
     public By localizadoresCheckBoxes = By.xpath("//form[@id=\"checkboxes\"]//input");
-    public By localizadorDeIframes = By.tagName("iframe");
-    public By localizadorEditorTexto = By.id("tinymce");
-    public By localizadorWebTables = By.tagName("table");
+    public By localizadorIframes = By.tagName("iframe");
+    public By localizadorDeEditorTexto= By.id("tinymce");
+    public By localizadorDeWebTable= By.tagName("table");
 
 
 
@@ -78,57 +77,95 @@ public class ManejoDeElementosWeb {
             chk.click();
             Thread.sleep(1000);
         }
-    }
 
+    }
     @Test
     public void iframes(){
         driver.get("https://the-internet.herokuapp.com/tinymce");
-        List<WebElement> iframes = driver.findElements(localizadorDeIframes);
+        List<WebElement> iframes = driver.findElements(localizadorIframes);
+        //cambiamos el driver
 
-        //cambiarnos de frame
         driver.switchTo().frame(iframes.get(0));
-
-        WebElement editorTexto = driver.findElement(localizadorEditorTexto);
+        WebElement editorTexto= driver.findElement(localizadorDeEditorTexto);
         editorTexto.clear();
-        editorTexto.sendKeys("Hola estamos aprendiendo Selenium");
-
+        editorTexto.sendKeys("Hola estamos aprendiendo selenium");
     }
-
     @Test
-    public void webTables(){
+    public void tablasWeb() {
         driver.get("https://the-internet.herokuapp.com/tables");
 
-        //Lista de Webtables en Pagina
-        List<WebElement> webTables = driver.findElements(localizadorWebTables);
 
-        //1. Cuantas Columnas tiene la tabla 1??
-        List<WebElement> columnas = webTables.get(0).findElement(By.tagName("thead")).findElements(By.tagName("th")); // encabezado de la tabla
-        int tamanioColumnas = columnas.size();
-        //2 clicks para ordenar por mayor deuda la webTable
+        //lista de tablas web
+        List<WebElement> webTables = driver.findElements(localizadorDeWebTable);
+
+        //cuantas  columnas tiene la tabla 1?
+        List<WebElement> columnas = webTables.get(0).findElement(By.tagName("thead")).findElements(By.tagName("th"));
+        int tamanioDeColumnas = columnas.size();
+
+
+        //2 clicks para ordenar por mayor deuda
         if(columnas.get(3).getText().contains("Due")){
             columnas.get(3).click();
             columnas.get(3).click();
         }
-        //obtener las filas de la webtable
+        //obtener datos de las filas
         List<WebElement> filas = webTables.get(0).findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
-        int tamanioFilas = filas.size();
+        int tamaniofilas = filas.size();
 
-        //trabajamos en la primera fila para obtener nombre, apellido y deuda
+        //trabajamos en la fila
         String nombre = filas.get(0).findElement(By.xpath("td[2]")).getText();
         String apellido = filas.get(0).findElement(By.xpath("td[1]")).getText();
         String deuda = filas.get(0).findElement(By.xpath("td[4]")).getText();
 
-        System.out.println("El usuario con mayor deuda de la tabla 1 es: "+nombre+" "+apellido+", y su deuda alcanza los "+deuda+ " dolares.");
+        System.out.println("El usuario con mayor deuda es "+ nombre+" "+apellido+", y su deuda es de "+deuda+" dolares");
+
+    }
+    //Ejercicio 2 ordenar la tabla por Nombres
+    @Test
+    public void tablasWeb2() {
+        driver.get("https://the-internet.herokuapp.com/tables");
+
+
+        //lista de tablas web
+        List<WebElement> webTables = driver.findElements(localizadorDeWebTable);
+
+        //cuantas  columnas tiene la tabla 2?
+        List<WebElement> columnas = webTables.get(1).findElement(By.tagName("thead")).findElements(By.tagName("th"));
+        int tamanioDeColumnas = columnas.size();
+
+        if(columnas.get(1).getText().contains("First Name")){
+            columnas.get(1).click();
+        }
+        List<WebElement> filas = webTables.get(1).findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
+        int tamaniofilas = filas.size();
+
+        for (int i = 0; i <tamaniofilas ; i++) {
+            String nombre = filas.get(i).findElement(By.xpath("td[2]")).getText();
+            String apellido= filas.get(i).findElement(By.xpath("td[1]")).getText();
+            System.out.println(nombre+" "+apellido);
+        }
+
+        /*String nombre = filas.get(0).findElement(By.xpath("td[2]")).getText();
+        System.out.println(nombre);
+        String nombre2 = filas.get(1).findElement(By.xpath("td[2]")).getText();
+        System.out.println(nombre2);
+        String nombre3 = filas.get(2).findElement(By.xpath("td[2]")).getText();
+        System.out.println(nombre3);
+        String nombre4 = filas.get(3).findElement(By.xpath("td[2]")).getText();
+        System.out.println(nombre4);*/
+
+
+
 
     }
 
-    //ejercicio tabla 2: ordenar por Nombre y entregar datos de deuda de todos los usuarios
 
-    @After
+
+   /* @After
     public void close(){
         if(driver != null){
             driver.close();
         }
-    }
+    }*/
 
 }
