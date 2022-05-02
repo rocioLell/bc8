@@ -5,7 +5,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.devtools.v93.indexeddb.model.Key;
 
 import java.time.Duration;
 import java.util.Set;
