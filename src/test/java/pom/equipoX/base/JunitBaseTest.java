@@ -1,4 +1,4 @@
-package pom.earaya.base;
+package pom.equipoX.base;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
@@ -11,7 +11,7 @@ import java.time.Duration;
 
 public class JunitBaseTest {
     /*aca trabajaremos todos los setup de configuracion inicial de los test a ejecutar*/
-    protected WebDriver driver;
+    public WebDriver driver;
     @BeforeClass
     public static void initTesting(){
         WebDriverManager.edgedriver().setup();
