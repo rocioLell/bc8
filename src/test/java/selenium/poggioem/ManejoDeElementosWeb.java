@@ -110,27 +110,6 @@ public class ManejoDeElementosWeb {
 
         System.out.println("El usuario con mayor deuda es: " + nombre + apellido + " y su deuda es de: $" + deuda + "USD");
     }
-
-    //ACA, EJERCICIO.
-    @Test
-    public void webTablesOrdenarPorNombre() throws InterruptedException {
-        driver.get("https://the-internet.herokuapp.com/tables");
-        List<WebElement> tables = driver.findElements(localizadorWebTables);
-        List <WebElement> columnas = tables.get(0).findElement(By.tagName("thead")).findElements(By.tagName("th")); //busqueda dentro de una busqueda
-        if(columnas.get(0).getText().contains("First name")){
-            columnas.get(0).click();
-            columnas.get(0).click();
-            columnas.get(0).click();
-        }
-        Thread.sleep(1000);
-        List<WebElement> filas = tables.get(0).findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
-        for (WebElement fila : filas) {
-            System.out.println(fila.findElement(By.xpath("td[2]")).getText());
-        }
-        Thread.sleep(1000);
-    }
-
-
         @After
     public void close(){
         if(driver != null){
