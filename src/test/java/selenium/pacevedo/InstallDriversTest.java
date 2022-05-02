@@ -15,7 +15,6 @@ public class InstallDriversTest {
     @Test
     public void chromeSession() {
         WebDriverManager.chromedriver().setup();
-
         WebDriver driver = new ChromeDriver();
 
         driver.quit();
@@ -24,7 +23,6 @@ public class InstallDriversTest {
     @Test
     public void edgeSession() {
         WebDriverManager.edgedriver().setup();
-
         WebDriver driver = new EdgeDriver();
 
         driver.quit();
@@ -33,7 +31,6 @@ public class InstallDriversTest {
     @Test
     public void firefoxSession() {
         WebDriverManager.firefoxdriver().setup();
-
         WebDriver driver = new FirefoxDriver();
 
         driver.quit();
@@ -43,7 +40,6 @@ public class InstallDriversTest {
     @Test
     public void ieSession() {
         WebDriverManager.iedriver().setup();
-
         WebDriver driver = new InternetExplorerDriver();
 
         driver.quit();
