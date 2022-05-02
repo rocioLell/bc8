@@ -64,7 +64,7 @@ public class TestSuiteAlojamientosFalabella {
     @Test public void ATC01(){
         int mesViajeIda = 5;
         int mesViajeVuelta = 5;
-        int diaViajeIda = 1;
+        int diaViajeIda = 10;
         int diaViajeVuelta = 20;
         int añoViajeIda = 2022;
         int añoViajeVuelta = 2022;
