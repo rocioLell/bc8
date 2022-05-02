@@ -161,11 +161,11 @@ public class ManejoDeElementosWeb {
 
 
 
-   /* @After
+    @After
     public void close(){
         if(driver != null){
             driver.close();
         }
-    }*/
+    }
 
 }
