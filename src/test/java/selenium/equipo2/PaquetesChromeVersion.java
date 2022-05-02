@@ -53,7 +53,7 @@ public class PaquetesChromeVersion {
     By vistaMapaXP = By.xpath("//em[text()=\"Vista Mapa\"]");
     By seleccionHotel = By.xpath("(//div[@class=\"eva-3-marker -eva-3-shadow-1 -eva-3-index-3\"])[1]");
     By botonVerViaje = By.xpath("(//a[@class=\"button -md -eva-3-ml-md eva-3-btn-ghost\"])[1]");
-    //Pablo
+
     public By paquete = By.xpath("//i[@title=\"Paquetes\"]");
     public By vueloAlojamiento= By.xpath("//input[@class=\"sbox-bundle-input sbox-radio-vh sbox-radio-selected-box\"]");
     public By origen= By.xpath("//input[@class=\"input-tag sbox-main-focus sbox-origin sbox-primary sbox-places-first sbox-origin-container places-inline\"]\n");
@@ -64,7 +64,7 @@ public class PaquetesChromeVersion {
     public By aceptarCookie =By.xpath("//em[@class=\"btn-text\"]");
     public By destinoDos = By.xpath("//input[@class=\"input-tag sbox-main-focus sbox-hotel-another-city sbox-primary undefined attr\"]");
     public By paqueteMarDelPlata = By.xpath("(//button[@class=\"eva-3-btn -md -primary -eva-3-fwidth\"])[1]");
-
+    public By paqueteSantiagoChile2 = By.xpath("//button[@class=\"eva-3-btn -md -primary -eva-3-fwidth\"]");
 
     @BeforeClass
     public static void init() {
@@ -83,6 +83,9 @@ public class PaquetesChromeVersion {
 
         // Ingresamos a la Pagina
         driver.get("https://www.viajesfalabella.cl/");
+        //Aceptar Cookies
+        WebElement webElementAceptarCookie= driver.findElement(aceptarCookie);
+        webElementAceptarCookie.click();
 
         // Seleccionamos el Apartados Paquetes
         WebElement webElementPaquete= driver.findElement(paquete);
@@ -104,9 +107,6 @@ public class PaquetesChromeVersion {
         exwait.until(ExpectedConditions.elementToBeClickable(resultado));
         webElementResultado.click();
 
-        //Aceptar Cookie
-        WebElement webElementAceptarCookie= driver.findElement(aceptarCookie);
-        webElementAceptarCookie.click();
         // Seleccion de Fecha Ida y Vuelta
         WebElement webElementFechaIda=driver.findElement(fechaIda);
         webElementFechaIda.click();
@@ -128,7 +128,7 @@ public class PaquetesChromeVersion {
         exwait.until(ExpectedConditions.elementToBeClickable(resultado));
 
         //Elegir Paquete
-        WebElement webElementPaqueteChile= driver.findElement(paqueteSantiagoChile);
+        WebElement webElementPaqueteChile= driver.findElement(paqueteSantiagoChile2);
         webElementPaqueteChile.click();
 
 
@@ -137,6 +137,9 @@ public class PaquetesChromeVersion {
     @Test
     public void ATC02PQ(){
         driver.get("https://www.viajesfalabella.cl/");
+        //Aceptar Cookies
+        WebElement webElementAceptarCookie= driver.findElement(aceptarCookie);
+        webElementAceptarCookie.click();
         WebDriverWait exwait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
         WebElement bPaquetes = driver.findElement(botonPaquetes);
@@ -174,6 +177,8 @@ public class PaquetesChromeVersion {
         WebElement PaqueteSantChil = driver.findElement(paqueteSantiagoChile);
         PaqueteSantChil.click();
     }
+
+
     @Test
     public void ATC03PQ(){
         // Ingresamos a la Pagina
