@@ -1,4 +1,4 @@
-package pom.equipo1.base;
+package pom.earaya.base;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
