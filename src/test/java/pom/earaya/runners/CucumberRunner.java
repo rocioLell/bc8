@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         features = {"src/test/java/pom/earaya/features"}, //Ruta
         glue = {"pom.earaya.steps", "pom.earaya.base"}, //package
         plugin = {"pretty"},
-        tags =""
+        tags ="@Regresion"
 )
 public class CucumberRunner {
 }

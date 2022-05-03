@@ -18,5 +18,6 @@ public class BusquedaIncorrectaTest extends JUnitBaseTest {
         alojamientos.seleccionBarraBusqueda();
         alojamientos.clickBuscar();
 
+
     }
 }

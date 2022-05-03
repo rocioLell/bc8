@@ -21,6 +21,8 @@ public class GoogleHomePage extends SeleniumBasePage{
     }
     public void buscarTexto(String texto){
         type(texto,barraGoogle);
+    }
+    public void clickBtnBarraGoogle(){
         click(btnGoogle);
     }
 

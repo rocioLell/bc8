@@ -10,7 +10,7 @@ import java.time.Duration;
 
 public class CucumberBaseTest {
     /*aca trabajaremos todos los setup de configuracion inicial de los test a ejecutar*/
-    public WebDriver driver;
+    private static WebDriver driver;
     @Before(order = 1)
     public static void initTesting(){
         WebDriverManager.edgedriver().setup();
@@ -31,6 +31,11 @@ public class CucumberBaseTest {
         if(driver != null){
             driver.close();
         }
+    }
+
+    //funcion obtener el driver
+    public static WebDriver getDriver(){
+        return driver;
     }
 
 
