@@ -1,15 +1,14 @@
 package pom.Equipo2.Base;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
 import java.util.List;
+import java.util.Set;
 
 public class SeleniumBasePage {
     /*en esta clase inicializaremos los metodos de selenium que usaremos en nuestra automatizacion*/
 
-    private WebDriver driver;
+    protected WebDriver driver;
 
     public SeleniumBasePage(WebDriver driver){
         this.driver =driver;
@@ -51,6 +50,10 @@ public class SeleniumBasePage {
         driver.findElement(locator).sendKeys(inputText);
     }
 
+    public void submit(By locator){
+        driver.findElement(locator).sendKeys(Keys.ENTER);
+    }
+
     /**
      * funcion que hace 1 click en un WebElement
      * @param locator : Objeto By del repositorio
@@ -90,5 +93,14 @@ public class SeleniumBasePage {
     public String getTitle(){
         return driver.getTitle();
     }
+
+    public void scrollear (By locator){
+        WebElement scroll = driver.findElement(locator);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();", scroll);
+    }
+
+
+
 
 }
