@@ -1,4 +1,4 @@
-package pom.equipoX.base;
+package pom.equipo1.base;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
