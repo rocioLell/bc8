@@ -1,4 +1,4 @@
-package katas.igarate;
+package junit.jvegas.katas.igarate;
 
 public class KataTest {
 }

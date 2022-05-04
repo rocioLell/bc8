@@ -1,4 +1,4 @@
-package katas;
+package junit.jvegas.katas;
 
 import static org.junit.Assert.*;
 

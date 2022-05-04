@@ -28,7 +28,7 @@ public class JunitBaseTest {
 
     @After
     public void close(){
-        System.out.println("after");
+       System.out.println("after");
         if(driver != null){
             driver.close();
         }

@@ -1,5 +1,6 @@
 package junit.morona;
 
+
 import org.junit.Test;
 
 import java.util.ArrayList;
