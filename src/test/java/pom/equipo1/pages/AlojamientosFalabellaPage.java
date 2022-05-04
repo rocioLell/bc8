@@ -1,13 +1,13 @@
 package pom.equipo1.pages;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import pom.equipo1.base.SeleniumBasePage;
 
-public class BusquedaAlojamientosFalabellaPage extends SeleniumBasePage {
+public class AlojamientosFalabellaPage extends SeleniumBasePage {
 
-    public BusquedaAlojamientosFalabellaPage(WebDriver driver) {
+    public AlojamientosFalabellaPage(WebDriver driver) {
         super(driver);
     }
 
@@ -23,6 +23,12 @@ public class BusquedaAlojamientosFalabellaPage extends SeleniumBasePage {
     By localizadorMonthActiveRange = By.xpath("//div[contains(@class, \"_dpmg2--has-start-range\")]");
     By localizadorBtnAplicarDate = By.xpath("//button[@class=\"_dpmg2--desktopFooter-button _dpmg2--desktopFooter-button-apply sbox-3-btn -lg -primary\"]");
     By localizadorBtnBuscar = By.xpath("(//div [@class = \"sbox-button-container\"] )[1]");
+    By localizadorResultado = By.xpath("//div[@class=\"accommodations-in-other-destination-message-wrapper -eva-3-tc\"]");
+    By localizadorPasajeros = By.xpath("(//div[contains(@class, \"sbox-guests-container\")])[1]");
+    By localizadorAumentarAdultos = By.xpath("(//a[@class = \"steppers-icon-right sbox-3-icon-plus\"])[1]");
+    By localizadorBtnAplicarPasajeros = By.xpath("//a[text() =\"Aplicar\"]");
+    By localizadorMensajeDeError = By.xpath("//h5[@class =\"message-title eva-3-h5\"]");
+    By localizadorHotelAgotado = By.xpath("//p[contains(text(),\"Todas las\")]");
 
     //funciones o acciones que podemos hacer en la web -> buscar en barra google
     public void irAlojamientosFalabella(){
@@ -40,9 +46,8 @@ public class BusquedaAlojamientosFalabellaPage extends SeleniumBasePage {
     
     public void ingresarFechaIda(int diaViajeIda, int añoViajeIda, int mesViajeIda ){
         click(localizadorDateStart);
-        WebElement mesActual = findElement(localizadorMonthActive);
-        String monthInit = mesActual.getAttribute("data-month").split("-")[1];
-        String yearInit = mesActual.getAttribute("data-month").split("-")[0];
+        String monthInit = getAttribute(localizadorMonthActive,"data-month").split("-")[1];
+        String yearInit = getAttribute(localizadorMonthActive,"data-month").split("-")[0];
         if (Integer.parseInt(yearInit) == añoViajeIda){
             for (int i = Integer.parseInt(monthInit); i <= mesViajeIda; i++) {
                 if (i == mesViajeIda){
@@ -66,9 +71,8 @@ public class BusquedaAlojamientosFalabellaPage extends SeleniumBasePage {
 
     public void ingresarFechaVuelta(int diaViajeVuelta, int anioViajeVuelta, int mesViajeVuelta, int añoViajeIda, int mesViajeIda ){
         click(localizadorDateEnd);
-        WebElement mesActualVuelta = findElement(localizadorMonthActiveRange);
-        String monthInitVuelta = mesActualVuelta.getAttribute("data-month").split("-")[1];
-        String yearInitVuelta = mesActualVuelta.getAttribute("data-month").split("-")[0];
+        String monthInitVuelta = getAttribute(localizadorMonthActiveRange,"data-month").split("-")[1];
+        String yearInitVuelta = getAttribute(localizadorMonthActiveRange,"data-month").split("-")[0];
         if (mesViajeIda<=mesViajeVuelta || añoViajeIda<=anioViajeVuelta){
             if (Integer.parseInt(yearInitVuelta) == anioViajeVuelta){
                 for (int i = Integer.parseInt(monthInitVuelta); i <= mesViajeVuelta  ; i++) {
@@ -99,5 +103,27 @@ public class BusquedaAlojamientosFalabellaPage extends SeleniumBasePage {
     public void buscarAlojamiento(){
         click(localizadorBtnBuscar);
     }
-    
+
+    public void selecionarPasajerosAdultos(int cantidadAdultos){
+        click(localizadorPasajeros);
+        if  (cantidadAdultos > 2) {
+            for (int i = 0; i < cantidadAdultos; i++) {
+                click(localizadorAumentarAdultos);
+            }
+        }
+        click(localizadorBtnAplicarPasajeros);
+    }
+
+    public String resultadoAlojamiento (){
+        System.out.println(getText(localizadorResultado)); ;
+        return getText(localizadorResultado);
+    }
+
+    public  String resultadoError(){
+        return getText(localizadorMensajeDeError);
+    }
+
+    public boolean Agotado(){
+        return isDisplayed(localizadorHotelAgotado);
+    }
 }
