@@ -1,4 +1,4 @@
-package katas.earaya;
+package junit.jvegas.katas.earaya;
 
 public class KataTest {
 }
