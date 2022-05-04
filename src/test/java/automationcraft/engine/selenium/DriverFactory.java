@@ -3,6 +3,7 @@ package automationcraft.engine.selenium;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DriverFactory {
@@ -18,9 +19,9 @@ public class DriverFactory {
     public WebDriver init_driver(String browser){
         System.out.println("browser value is: "+browser);
 
-        if(browser.equals("chrome")){
-            WebDriverManager.chromedriver().setup();
-            hiloLocal.set(new ChromeDriver());
+        if(browser.equals("edge")){
+            WebDriverManager.edgedriver().setup();
+            hiloLocal.set(new EdgeDriver());
         }else if(browser.equals("firefox")){
             WebDriverManager.firefoxdriver().setup();
             hiloLocal.set(new FirefoxDriver());
